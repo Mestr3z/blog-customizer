@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { StrictMode, CSSProperties } from 'react';
+import { StrictMode, CSSProperties, useRef, useState } from 'react';
 import clsx from 'clsx';
 
 import { Article } from './components/article/Article';
@@ -13,8 +13,16 @@ const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 
 const App = () => {
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const mainRef = useRef<HTMLElement>(null);
+
+	const handleToggleSidebar = () => {
+		setIsSidebarOpen((prev) => !prev);
+	};
+
 	return (
 		<main
+			ref={mainRef}
 			className={clsx(styles.main)}
 			style={
 				{
@@ -25,7 +33,11 @@ const App = () => {
 					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm />
+			<ArticleParamsForm
+				isOpen={isSidebarOpen}
+				onToggle={handleToggleSidebar}
+				mainRef={mainRef}
+			/>
 			<Article />
 		</main>
 	);
