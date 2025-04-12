@@ -1,7 +1,7 @@
 .container {
 	position: fixed;
 	left: 0;
-	width: 616px;
+	max-width: 616px;
 	height: 100%;
 	overflow: scroll;
 	transform: translate(-616px);
