@@ -34,6 +34,7 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
+		"gh-pages": "^6.3.0",
 		"html-webpack-plugin": "^5.5.1",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",
@@ -69,7 +70,9 @@
 		"prepare": "husky install",
 		"commit": "npm run test && cz",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"predeploy": "npm run build",
+  		"deploy": "gh-pages -d dist"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -91,5 +94,5 @@
 			"path": "./node_modules/cz-conventional-changelog"
 		}
 	},
-	"homepage": "./"
+	"homepage": "https://Mestr3z.github.io/blog-customizer"
 }
